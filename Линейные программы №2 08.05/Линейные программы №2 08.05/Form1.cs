@@ -12,10 +12,14 @@ namespace Линейные_программы__2_08._05
 {
     public partial class Form1 : Form
     {
-        const int cost = 300;
-        const int costsittingdown = 30;
+        public int cost;
+        public int costsittingdown;
         public bool flag = false;
         public int k = 0;
+        public bool ehal1 = true;
+        public bool ehal2 = true;
+        public bool ehal3 = true;
+        public int kolvo = 3;
         public Form1()
         {
             InitializeComponent();
@@ -35,6 +39,11 @@ namespace Линейные_программы__2_08._05
         {
             timer1.Start();
             flag = true;
+            button5.Enabled = false;
+            label3.Text = Convert.ToString(costsittingdown / 3);
+            label4.Text = Convert.ToString(costsittingdown / 3);
+            label5.Text = Convert.ToString(costsittingdown / 3);
+            textBox1.Text = costsittingdown.ToString();
         }
         private void timer1_Tick(object sender, EventArgs e)
         {
@@ -47,13 +56,41 @@ namespace Линейные_программы__2_08._05
                     button2.Enabled = false;
                     button3.Enabled = false;
                     button4.Enabled = false;
-                    textBox1.Text = Convert.ToString(3 * cost);
+                    textBox1.Text = Convert.ToString(cost);
+                    if (ehal1) label3.Text = Convert.ToString(cost / 3); else label3.Text = Convert.ToString(costsittingdown / 3);
+                    if (ehal2) label4.Text = Convert.ToString(cost / 3); else label4.Text = Convert.ToString(costsittingdown / 3);
+                    if (ehal3) label5.Text = Convert.ToString(cost / 3); else label5.Text = Convert.ToString(costsittingdown / 3);
                 }
             }
             else
             {
+                timer1.Stop();
                 MessageBox.Show("Поездка завершена");
+                button2.Enabled = false;
+                button3.Enabled = false;
+                button4.Enabled = false;
             }
+        }
+        public void Howmuchwasgoing(int kolvo)
+        {
+            switch(kolvo)
+            {
+                case 3:
+                    {
+                        textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + cost / 3);
+                    }
+                    break;
+                case 2:
+                    {
+                        textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + cost / 2);
+                    }
+                    break;
+                case 1:
+                    {
+                        textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + cost);
+                    }
+                    break;
+            }    
         }
         private void button2_Click(object sender, EventArgs e)
         {
@@ -65,32 +102,52 @@ namespace Линейные_программы__2_08._05
                 case "Пассажир 1":
                     {
                         if (flag == false)
-                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + costsittingdown / 3);}
+                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + costsittingdown / 3); label3.Text = Convert.ToString(costsittingdown / 3); ehal1 = false; kolvo--; }
                         else
-                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + cost);}
+                        {
+                            Howmuchwasgoing(kolvo);
+                            label3.Text = Convert.ToString(cost / 2);
+                        }
                         k++;
+                        b.Enabled = false;
                     }
                     break;
                 case "Пассажир 2":
                     {
                         if (flag == false)
-                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + costsittingdown / 3); }
+                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + costsittingdown / 3); label4.Text = Convert.ToString(costsittingdown / 3); ehal2 = false; kolvo--; }
                         else
-                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + cost); }
+                        {
+                            Howmuchwasgoing(kolvo);
+                            label4.Text = Convert.ToString(Int32.Parse(label4.Text) + (cost - costsittingdown) / 3);
+                        }
                         k++;
+                        b.Enabled = false;
                     }
                     break;
                 case "Пассажир 3":
                     {
                         if (flag == false)
-                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + costsittingdown / 3); }
+                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + costsittingdown / 3); label5.Text = Convert.ToString(costsittingdown / 3); ehal3 = false; kolvo--; }
                         else
-                        { textBox1.Text = Convert.ToString(Int32.Parse(textBox1.Text) + cost); }
+                        {
+                            Howmuchwasgoing(kolvo);
+                            label5.Text = Convert.ToString(Int32.Parse(label4.Text) + (cost - costsittingdown) / 3);
+                        }
                         k++;
+                        b.Enabled = false;
                     }
                     break;
             }
             b.Text = "";
+        }
+
+        private void button6_Click(object sender, EventArgs e)
+        {
+            button6.Enabled = false;
+            cost = Int32.Parse(textBox2.Text);
+            costsittingdown = cost / 100 * 10;
+            groupBox1.Enabled = true;
         }
     }
 }
