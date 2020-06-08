@@ -63,6 +63,16 @@ namespace Линейные_программы__2_08._05.Properties {
         /// <summary>
         ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
         /// </summary>
+        internal static System.Drawing.Bitmap k {
+            get {
+                object obj = ResourceManager.GetObject("k", resourceCulture);
+                return ((System.Drawing.Bitmap)(obj));
+            }
+        }
+        
+        /// <summary>
+        ///   Поиск локализованного ресурса типа System.Drawing.Bitmap.
+        /// </summary>
         internal static System.Drawing.Bitmap q {
             get {
                 object obj = ResourceManager.GetObject("q", resourceCulture);
