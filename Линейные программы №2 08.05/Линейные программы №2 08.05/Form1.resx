@@ -117,16 +117,7 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
-  <data name="label1.Text" xml:space="preserve">
-    <value>Такси. В такси одновременно сели три пассажира. Когда вышел первый пассажир,
-на счетчике было р1 рублей; когда вышел второй — р2 рублей. Сколько должен был
-заплатить каждый пассажир, если по окончании поездки счетчик показал р3 рублей?
-Плата за посадку составляет р0 рублей.
-Тестирование: общая сумма оплаты пассажирами должна совпадать с 
-показанием счетчика по окончании поездки. Рассмотрим крайние ситуации. 
-По справедливости, если все три пассажира вышли одновременно, 
-они должны заплатить по (р0 + р3)/3 руб. Если же первый и второй 
-пассажиры «передумали ехать», они платят по р0/3 руб., а оставшаяся 
-сумма ложится на счет третьего пассажира</value>
-  </data>
+  <metadata name="timer1.TrayLocation" type="System.Drawing.Point, System.Drawing, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a">
+    <value>17, 17</value>
+  </metadata>
 </root>
